@@ -12,7 +12,15 @@
         "storage"
     ],
     "background": {
-        "scripts": ["background.js"],
+        "scripts": [
+            "background.js",
+            "nicCage.js",
+            "mouseSize.js",
+            "snackbar.js"
+        ],
         "persistent": false
-    }
+    },
+    "web_accessible_resources": [
+        "cageImgs/*.jpg"
+    ]
   }
