@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     var nCageSwitch = document.getElementsByClassName('ncage-pics')[0];
-    var mouseSizeSwitch = document.getElementsByClassName('mouse-size-switch')[0];
+    var mouseChangeSwitch = document.getElementsByClassName('mouse-change-switch')[0];
+    var toastTextSwitch = document.getElementsByClassName('toast-switch')[0];
+    var noInternetSwitch = document.getElementsByClassName('no-internet-switch')[0];
     var nicCageChecked = true;
 
     chrome.storage.sync.get(["nicCageToggle"], function(items){
@@ -8,23 +10,44 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if(nicCageChecked === true){
             nCageSwitch.checked = true;
-            console.log("its true");
         }
         else{
             nCageSwitch.checked = false;
-            console.log("its false");
         }
     });
 
-    chrome.storage.sync.get(["mouseSizeToggle"], function(items){
+    chrome.storage.sync.get(["noInternetToggle"], function(items){
+        var noInternetChecked = items.noInternetToggle;
 
-        var mouseSizeChecked = items.mouseSizeToggle;
-
-        if(mouseSizeChecked === true){
-            mouseSizeSwitch.checked = true;
+        if(noInternetChecked === true){
+            noInternetSwitch.checked = true;
         }
         else{
-            mouseSizeSwitch.checked = false;
+            noInternetSwitch.checked = false;
+        }
+    });
+
+    chrome.storage.sync.get(["mouseChangeToggle"], function(items){
+
+        var mouseChangeChecked = items.mouseChangeToggle;
+
+        if(mouseChangeChecked === true){
+            mouseChangeSwitch.checked = true;
+        }
+        else{
+            mouseChangeSwitch.checked = false;
+        }
+    });
+
+    chrome.storage.sync.get(["toastTextToggle"], function(items){
+
+        var toastTextChecked = items.toastTextToggle;
+
+        if(toastTextChecked === true){
+            toastTextSwitch.checked = true;
+        }
+        else{
+            toastTextSwitch.checked = false;
         }
     });
 
@@ -34,10 +57,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, false);
 
-
-    mouseSizeSwitch.addEventListener('click', function() {
+    noInternetSwitch.addEventListener('click' , function() {
         chrome.storage.sync.set({
-            mouseSizeToggle: mouseSizeSwitch.checked
+            noInternetToggle: noInternetSwitch.checked
+        });
+    }, false);
+
+
+    mouseChangeSwitch.addEventListener('click', function() {
+        chrome.storage.sync.set({
+            mouseChangeToggle: mouseChangeSwitch.checked
+        });
+    }, false);
+
+    toastTextSwitch.addEventListener('click', function() {
+
+        chrome.storage.sync.set({
+            toastTextToggle: toastTextSwitch.checked
         });
     }, false);
     
