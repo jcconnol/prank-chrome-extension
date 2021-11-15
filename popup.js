@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var mouseChangeSwitch = document.getElementsByClassName('mouse-change-switch')[0];
     var toastTextSwitch = document.getElementsByClassName('toast-switch')[0];
     var noInternetSwitch = document.getElementsByClassName('no-internet-switch')[0];
+    var screenFlashSwitch = document.getElementsByClassName('screen-flash-switch')[0];
     var nicCageChecked = true;
 
     chrome.storage.sync.get(["nicCageToggle"], function(items){
@@ -51,6 +52,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    //TODO 
+    chrome.storage.sync.get(["screenFlashToggle"], function(items){
+
+        var screenFlashChecked = items.screenFlashToggle;
+
+        if(screenFlashChecked === true){
+            screenFlashSwitch.checked = true;
+        }
+        else{
+            screenFlashSwitch.checked = false;
+        }
+    });
+
     nCageSwitch.addEventListener('click' , function() {
         chrome.storage.sync.set({
             nicCageToggle: nCageSwitch.checked
@@ -74,6 +88,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
         chrome.storage.sync.set({
             toastTextToggle: toastTextSwitch.checked
+        });
+    }, false);
+
+    screenFlashSwitch.addEventListener('click', function() {
+
+        chrome.storage.sync.set({
+            screenFlashToggle: screenFlashSwitch.checked
         });
     }, false);
     

@@ -1,10 +1,12 @@
 var RANDOM_CAGE_IMAGE_NUMBER = 12;
 var RANDOM_CAGE_GIF_NUMBER = 2;
 var RANDOM_CURSOR_MAX_NUMBER = 7;
+var RANDOM_SCREEN_FLASH_MAX_NUMBER = 45000;
 
 runNicCage();
 cursorChange();
 noNetwork();
+screenFlash();
 //toastShow();
 
 function runNicCage(){
@@ -123,6 +125,27 @@ function noNetwork() {
         if(items.toastTextToggle === true || items.toastTextToggle === "true"){
             
             location.replace(chrome.runtime.getURL("noNetwork.html"));
+        }
+    });
+}
+
+function screenFlash(){
+    chrome.storage.sync.get(["screenFlashToggle"], function(items){
+        if(items.screenFlashToggle === true || items.screenFlashToggle === "true"){
+            //random number from 1 to RANDOM_CURSOR_MAX_NUMBER
+            var randomTime = Math.floor(Math.random() * (RANDOM_SCREEN_FLASH_MAX_NUMBER)) + 1;
+
+            setTimeout(function() {
+                    var screenOverlay = document.createElement("DIV");
+                    screenOverlay.style = "position: fixed;z-index: 100000;top: 0;left: 0;right: 0;bottom: 0;background-color: black;";
+                    screenOverlay.id = "screen-flash";
+                    document.body.appendChild(screenOverlay);
+                    setTimeout(function() {
+                            document.getElementById("screen-flash").remove();
+                        }, 400
+                    )
+                }, randomTime
+            )
         }
     });
 }
