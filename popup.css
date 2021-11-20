@@ -1,10 +1,37 @@
 body {
     width: 30em;
+    margin-left: 2%;
+}
+
+h1 {
+  font-size: xx-large;
+}
+
+h3 {
+  font-size: medium;
+}
+
+.screen-flash-interval {
+  margin-left: 2%;
+}
+
+.screen-flash-interval-number {
+  width: 15%;
+}
+
+.mouse-cursor-dropdown {
+  width: 30%;
+  margin: 0 0 0 4%;
+}
+
+.prank-list {
+  margin-left: 5%;
 }
 
 .switch {
   position: relative;
   display: inline-block;
+  margin-top: 2%;
   width: 30px;
   height: 18px;
 }
@@ -15,94 +42,48 @@ body {
   height: 0;
 }
   
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 30%;
+  left: 0;
+  right: 0;
+  bottom: -30%;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
   
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 13px;
-    width: 13px;
-    left: 4px;
-    bottom: 3px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: gray;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px gray;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(10px);
+  -ms-transform: translateX(10px);
+  transform: translateX(10px);
+}
   
-  input:checked + .slider {
-    background-color: gray;
-  }
-  
-  input:focus + .slider {
-    box-shadow: 0 0 1px gray;
-  }
-  
-  input:checked + .slider:before {
-    -webkit-transform: translateX(10px);
-    -ms-transform: translateX(10px);
-    transform: translateX(10px);
-  }
-  
-  /* Rounded sliders */
 .slider.round {
     border-radius: 34px;
 }
 
 .slider.round:before {
     border-radius: 50%;
-}
-
-.snackbar {
-  visibility: hidden; /* Hidden by default. Visible on click */
-  min-width: 250px; /* Set a default minimum width */
-  margin-left: -125px; /* Divide value of min-width by 2 */
-  background-color: #333; /* Black background color */
-  color: #fff; /* White text color */
-  text-align: center; /* Centered text */
-  border-radius: 2px; /* Rounded borders */
-  padding: 16px; /* Padding */
-  position: fixed; /* Sit on top of the screen */
-  z-index: 1; /* Add a z-index if needed */
-  left: 50%; /* Center the snackbar */
-  bottom: 30px; /* 30px from the bottom */
-}
-
-/* Show the snackbar when clicking on a button (class added with JavaScript) */
-.snackbar.show {
-  visibility: visible; /* Show the snackbar */
-  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
-  However, delay the fade out process for 2.5 seconds */
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
-}
-
-/* Animations to fade the snackbar in and out */
-@-webkit-keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
-}
-
-@keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
-}
-
-@-webkit-keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
-}
-
-@keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
 }

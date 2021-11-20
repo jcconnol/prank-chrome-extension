@@ -1,13 +1,14 @@
 var RANDOM_CAGE_IMAGE_NUMBER = 12;
 var RANDOM_CAGE_GIF_NUMBER = 2;
 var RANDOM_CURSOR_MAX_NUMBER = 7;
-var RANDOM_SCREEN_FLASH_MAX_NUMBER = 45000;
+var RANDOM_SCREEN_FLASH_MAX_INTERVAL = 45000;
 
 runNicCage();
 cursorChange();
 noNetwork();
 screenFlash();
-//toastShow();
+
+//TODO put all the chrome storage into its own function and call other functions
 
 function runNicCage(){
     chrome.storage.sync.get(["nicCageToggle"], function(items){
@@ -44,87 +45,32 @@ function runNicCage(){
 function cursorChange() {
     chrome.storage.sync.get(["mouseChangeToggle"], function(items){
         if(items.mouseChangeToggle === true || items.mouseChangeToggle === "true"){
+            chrome.storage.sync.get(["mouseCursorChoice"], function(items){
+                if(items.mouseCursorChoice.trim() === "Random"){
+                    //random number from 1 to RANDOM_CURSOR_MAX_NUMBER
+                    var randomNumber = Math.floor(Math.random() * (RANDOM_CURSOR_MAX_NUMBER)) + 1;
 
-            //random number from 1 to RANDOM_CURSOR_MAX_NUMBER
-            var randomNumber = Math.floor(Math.random() * (RANDOM_CURSOR_MAX_NUMBER)) + 1;
-
-            document.body.style.cursor = "url("+chrome.runtime.getURL("cursorFiles/"+randomNumber+".cur")+"), none"
-        }
-    });
-}
-
-function toastShow() {
-    chrome.storage.sync.get(["toastTextToggle"], function(items){
-        if(items.toastTextToggle === true || items.toastTextToggle === "true"){
-            // Get the snackbar DIV
-            alert("toast");
-
-            var cssFileContents = `
-            #snackbar {
-                visibility: hidden;
-                min-width: 250px;
-                margin-left: -125px;
-                background-color: #333;
-                color: #fff;
-                text-align: center;
-                border-radius: 2px;
-                padding: 16px;
-                position: fixed;
-                z-index: 1;
-                left: 50%;
-                bottom: 30px;
-              }
-              
-              #snackbar.show {
-                visibility: visible;
-                -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-                animation: fadein 0.5s, fadeout 0.5s 2.5s;
-              }
-              
-              @-webkit-keyframes fadein {
-                from {bottom: 0; opacity: 0;}
-                to {bottom: 30px; opacity: 1;}
-              }
-              
-              @keyframes fadein {
-                from {bottom: 0; opacity: 0;}
-                to {bottom: 30px; opacity: 1;}
-              }
-              
-              @-webkit-keyframes fadeout {
-                from {bottom: 30px; opacity: 1;}
-                to {bottom: 0; opacity: 0;}
-              }
-              
-              @keyframes fadeout {
-                from {bottom: 30px; opacity: 1;}
-                to {bottom: 0; opacity: 0;}
-              }`
-            
-            var elemDiv = document.createElement('div');
-            elemDiv.id = 'snackbar';
-            elemDiv.style = cssFileContents;
-            elemDiv.className = "show";
-            elemDiv.innerText = 'random text';
-            document.body.appendChild(elemDiv);
-        
-            // Add the "show" class to DIV
-            
-            var x = document.getElementById("snackbar");
-        
-            // After 3 seconds, remove the show class from DIV
-            setTimeout(function(){
-                x.className = ""; 
-            }, 3000);
+                    document.body.style.cursor = "url("+chrome.runtime.getURL("cursorFiles/"+randomNumber+".cur")+"), none"
+                }
+                else{
+                    document.body.style.cursor = items.mouseCursorChoice;
+                }
+            });
         }
     });
 }
 
 function noNetwork() {
     chrome.storage.sync.get(["noInternetToggle"], function(items){
-        if(items.toastTextToggle === true || items.toastTextToggle === "true"){
-            
-            location.replace(chrome.runtime.getURL("noNetwork.html"));
+        if(items.noInternetToggle === true || items.noInternetToggle === "true"){
+            var noInternetURL = chrome.runtime.getURL("noNetwork.html");
+            console.log(noInternetURL)
+            fetch(noInternetURL)
+                .then(function (response) { 
+                    return response.text();                    
+                }).then(function(template){
+                    document.body.innerHTML = template;
+                })
         }
     });
 }
@@ -132,24 +78,26 @@ function noNetwork() {
 function screenFlash(){
     chrome.storage.sync.get(["screenFlashToggle"], function(items){
         if(items.screenFlashToggle === true || items.screenFlashToggle === "true"){
-            //random number from 1 to RANDOM_CURSOR_MAX_NUMBER
-            var randomTime = Math.floor(Math.random() * (RANDOM_SCREEN_FLASH_MAX_NUMBER)) + 1;
+            chrome.storage.sync.get(["screenFlashInterval"], function(items){
+                RANDOM_SCREEN_FLASH_MAX_INTERVAL = items.screenFlashInterval;
 
-            setTimeout(function() {
-                    var screenOverlay = document.createElement("DIV");
-                    screenOverlay.style = "position: fixed;z-index: 100000;top: 0;left: 0;right: 0;bottom: 0;background-color: black;";
-                    screenOverlay.id = "screen-flash";
-                    document.body.appendChild(screenOverlay);
+                setInterval(function(){
+                    //random number from 1 to RANDOM_CURSOR_MAX_NUMBER
+                    var randomTime = Math.floor(Math.random() * (RANDOM_SCREEN_FLASH_MAX_INTERVAL)) + 1;
+
                     setTimeout(function() {
-                            document.getElementById("screen-flash").remove();
-                        }, 400
-                    )
-                }, randomTime
-            )
+                            var screenOverlay = document.createElement("DIV");
+                            screenOverlay.style = "position: fixed;z-index: 100000;top: 0;left: 0;right: 0;bottom: 0;background-color: black;";
+                            screenOverlay.id = "screen-flash";
+                            document.body.appendChild(screenOverlay);
+                            setTimeout(function() {
+                                    document.getElementById("screen-flash").remove();
+                                }, 500
+                            )
+                        }, randomTime
+                    );
+                }, RANDOM_SCREEN_FLASH_MAX_INTERVAL);
+            });
         }
     });
-}
-
-function cursorSize() {
-
 }

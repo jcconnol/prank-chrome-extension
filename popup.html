@@ -11,82 +11,58 @@
   <body>
     <h1>Prankware Setup</h1>
     <h3>Enable the pranks below along with their cadence.</h3>
-    <p>Nic Cage Pics: 
+    <div class="prank-list">
+      <p>Nic Cage Pics: 
+          <label class="switch">
+              <input type="checkbox" class="ncage-pics" checked>
+              <span class="slider round"></span>
+          </label>
+      </p>
+      <p>No Internet: 
         <label class="switch">
-            <input type="checkbox" class="ncage-pics" checked>
+            <input type="checkbox" class="no-internet-switch">
             <span class="slider round"></span>
         </label>
-    </p>
-    <p>No Internet: 
-      <label class="switch">
-          <input type="checkbox" class="no-internet-switch">
-          <span class="slider round"></span>
-      </label>
-    </p>
-    <p>Screen Flash: 
-      <label class="switch">
-          <input type="checkbox" class="screen-flash-switch">
-          <span class="slider round"></span>
-      </label>
-    </p>
-    <p>Random Toast: 
+      </p>
+      <p>Screen Flash: 
         <label class="switch">
-            <input type="checkbox" class="toast-switch">
+            <input type="checkbox" class="screen-flash-switch">
             <span class="slider round"></span>
         </label>
-    </p>
-    <p>toast text: nice </p>
-    <!--p>Buttons not working: 
-      <label class="switch toast-text-switch">
-          <input type="checkbox">
-          <span class="slider round"></span>
-      </label>
-  </p-->
-  <p>Different mice cursors: 
-    <label class="switch">
-        <input type="checkbox" class="mouse-change-switch">
-        <span class="slider round"></span>
-    </label>
-    <!--select onchange="cursorChange(this);" size="32">
-      <option>alias
-      <option>all-scroll
-      <option>auto
-      <option>cell
-      <option>context-menu
-      <option>col-resize
-      <option>copy
-      <option>crosshair
-      <option>default
-      <option>e-resize
-      <option>ew-resize
-      <option>help
-      <option>move
-      <option>n-resize
-      <option>ne-resize
-      <option>nw-resize
-      <option>ns-resize
-      <option>no-drop
-      <option>none
-      <option>not-allowed
-      <option>pointer
-      <option>progress
-      <option>row-resize
-      <option>s-resize
-      <option>se-resize
-      <option>sw-resize
-      <option>text
-      <option>vertical-text
-      <option>w-resize   
-      <option>wait
-      <option>zoom-in
-      <option>zoom-out
-    </select -->
-  </p>
-  <!--p>No CSS: 
-    <label class="switch">
-        <input type="checkbox" class="no-css-switch">
-        <span class="slider round"></span>
-    </label>
-  </p-->
+        <span class="screen-flash-interval">
+          Interval: <input type="number"  maxlength="3" class="screen-flash-interval-number"> seconds
+        </span>
+      </p>
+      <p>Different mice cursors: 
+        <label class="switch">
+            <input type="checkbox" class="mouse-change-switch">
+            <span class="slider round"></span>
+        </label>
+        <select class="mouse-cursor-dropdown">
+          <option>Random
+          <option>alias
+          <option>all-scroll
+          <option>auto
+          <option>cell
+          <option>context-menu
+          <option>copy
+          <option>crosshair
+          <option>default
+          <option>help
+          <option>move
+          <option>no-drop
+          <option>none
+          <option>not-allowed
+          <option>pointer
+          <option>progress
+          <option>text
+          <option>vertical-text
+          <option>w-resize   
+          <option>wait
+          <option>zoom-in
+          <option>zoom-out
+        </select>
+      </p>
+    </div>
   </body>
 </html>
