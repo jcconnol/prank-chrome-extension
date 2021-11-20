@@ -23,6 +23,11 @@ Turn this on and specify an interval (say 45 seconds), at a random time during t
 When going to any website you typically like to see the normal mouse cursor or you like to be able to see your mouse cursor at all. With this enabled you can set the mouse cursor to be a specific cursor, such as none, or you can make it a random one. 
 The random mouse cursors were created in an editor and will change randomly. 
 
+
+## ***Chrome Web Store***
+This is not yet on the chrome Web store but that is coming in the near future so just calm down!
+
+
 ## ***Contribute***
 
 Want to contribute or add something? Have your own prank idea that should be added?
