@@ -50,9 +50,24 @@ function cursorChange() {
                     //random number from 1 to RANDOM_CURSOR_MAX_NUMBER
                     var randomNumber = Math.floor(Math.random() * (RANDOM_CURSOR_MAX_NUMBER)) + 1;
 
-                    document.body.style.cursor = "url("+chrome.runtime.getURL("cursorFiles/"+randomNumber+".cur")+"), none"
+                    var cursorURLStyle = "url("+chrome.runtime.getURL("cursorFiles/"+randomNumber+".cur")+"), none";
+                    var allDivs = document.getElementsByTagName("*");
+
+                    for(var i = 0; i < allDivs.length; i++){
+                        allDivs[0].style.cursor = cursorURLStyle
+                    }
+                    
+                    document.body.style.cursor = cursorURLStyle;
+
                 }
                 else{
+
+                    var allDivs = document.getElementsByTagName("*");
+
+                    for(var i = 0; i < allDivs.length; i++){
+                        allDivs[0].style.cursor = items.mouseCursorChoice
+                    }
+
                     document.body.style.cursor = items.mouseCursorChoice;
                 }
             });
