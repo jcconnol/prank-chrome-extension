@@ -29,6 +29,7 @@
         "cageImgs/*",
         "cursorFiles/*",
         "dogeImgs/*",
+        "soundFiles/*",
         "noNetwork.html"
     ]
   }

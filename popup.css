@@ -11,10 +11,12 @@ h3 {
   font-size: medium;
 }
 
+.play-error-interval,
 .screen-flash-interval {
   margin-left: 2%;
 }
 
+.play-error-interval-number,
 .screen-flash-interval-number {
   width: 15%;
 }

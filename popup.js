@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var noInternetSwitch = document.getElementsByClassName('no-internet-switch')[0];
     var screenFlashSwitch = document.getElementsByClassName('screen-flash-switch')[0];
     var screenFlashIntervalInput = document.getElementsByClassName('screen-flash-interval-number')[0];
+    var playErrorSwitch = document.getElementsByClassName('windows-error')[0];
+    var playErrorIntervalInput = document.getElementsByClassName('play-error-interval-number')[0];
+    var harlemShakeSwitch = document.getElementsByClassName('harlem-shake')[0];
     var nicCageChecked = true;
 
     chrome.storage.sync.get(["nicCageToggle"], function(items){
@@ -149,8 +152,67 @@ document.addEventListener('DOMContentLoaded', function() {
     }, false);
 
 
+    //play error
+    playErrorSwitch.addEventListener('click', function() {
+        chrome.storage.sync.set({
+            playErrorChoice: playErrorSwitch.checked
+        });
+    }, false);
 
+    chrome.storage.sync.get(["playErrorChoice"], function(items){
+        var playErrorChoice = items.playErrorChoice;
 
+        if(playErrorChoice === true){
+            playErrorSwitch.checked = true;
+        }
+        else{
+            playErrorSwitch.checked = false;
+        }
+    });
+
+    chrome.storage.sync.get(["playErrorInterval"], function(items){
+
+        var playErrorInterval = items.playErrorInterval;
+
+        if(playErrorInterval && !isNaN(playErrorInterval)){
+            playErrorIntervalInput.value = playErrorInterval;
+        }
+        else{
+            playErrorIntervalInput.value = -1;
+        }
+    });
+
+    playErrorIntervalInput.addEventListener('change', function(){
+        var intervalNum = playErrorIntervalInput.valueAsNumber;
+
+        if(!isNaN(intervalNum)){
+            chrome.storage.sync.set({
+                playErrorInterval: intervalNum
+            });
+        } else {
+            chrome.storage.sync.set({
+                playErrorInterval: -1
+            });
+        }
+    }, false);
+
+    //harlem shake
+    harlemShakeSwitch.addEventListener('click', function() {
+        chrome.storage.sync.set({
+            harlemShakeChoice: harlemShakeSwitch.checked
+        });
+    }, false);
+
+    chrome.storage.sync.get(["harlemShakeChoice"], function(items){
+        var harlemShakeChecked = items.harlemShakeChoice;
+
+        if(harlemShakeChecked === true){
+            harlemShakeSwitch.checked = true;
+        }
+        else{
+            harlemShakeSwitch.checked = false;
+        }
+    });
 
 
 
