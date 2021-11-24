@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     var nCageSwitch = document.getElementsByClassName('ncage-pics')[0];
+    var dogeSwitch = document.getElementsByClassName('doge-pics')[0];
     var mouseChangeSwitch = document.getElementsByClassName('mouse-change-switch')[0];
     var mouseCursorDropdown = document.getElementsByClassName('mouse-cursor-dropdown')[0];
     var noInternetSwitch = document.getElementsByClassName('no-internet-switch')[0];
@@ -21,6 +22,23 @@ document.addEventListener('DOMContentLoaded', function() {
     nCageSwitch.addEventListener('click' , function() {
         chrome.storage.sync.set({
             nicCageToggle: nCageSwitch.checked
+        });
+    }, false);
+
+    chrome.storage.sync.get(["dogeToggle"], function(items){
+        var dogeChecked = items.dogeToggle;
+
+        if(dogeChecked === true){
+            dogeSwitch.checked = true;
+        }
+        else{
+            dogeSwitch.checked = false;
+        }
+    });
+
+    dogeSwitch.addEventListener('click' , function() {
+        chrome.storage.sync.set({
+            dogeToggle: dogeSwitch.checked
         });
     }, false);
 

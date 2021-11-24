@@ -1,15 +1,17 @@
 var RANDOM_CAGE_IMAGE_NUMBER = 12;
 var RANDOM_CAGE_GIF_NUMBER = 2;
+var DOGE_IMAGE_NUMBER = 9;
 var RANDOM_CURSOR_MAX_NUMBER = 7;
 var RANDOM_SCREEN_FLASH_MAX_INTERVAL = 45000;
 
 runNicCage();
+runDoge();
 cursorChange();
 noNetwork();
 screenFlash();
+playError();
 
 //TODO put all the chrome storage into its own function and call other functions
-
 function runNicCage(){
     chrome.storage.sync.get(["nicCageToggle"], function(items){
 
@@ -34,6 +36,30 @@ function runNicCage(){
                 imageNum++;
 
                 if(imageNum > 14){
+                    imageNum = 1;
+                }
+            }
+        }
+    });
+}
+
+function runDoge(){
+    chrome.storage.sync.get(["dogeToggle"], function(items){
+
+        if(items.dogeToggle == true || items.dogeToggle == "true"){
+            //list out all images and replace them with nic cage images
+            var imageArray = document.getElementsByTagName("img");
+            imageArray = document.getElementsByTagName("img");
+
+            var imageNum = 1;
+            for(var i = 0; i < imageArray.length; i++){
+
+                var fileURL = chrome.runtime.getURL('dogeImgs/'+imageNum);
+                fileURL = fileURL + ".png"
+                imageArray[i].src = fileURL;
+                imageNum++;
+
+                if(imageNum > DOGE_IMAGE_NUMBER){
                     imageNum = 1;
                 }
             }
@@ -79,13 +105,12 @@ function noNetwork() {
     chrome.storage.sync.get(["noInternetToggle"], function(items){
         if(items.noInternetToggle === true || items.noInternetToggle === "true"){
             var noInternetURL = chrome.runtime.getURL("noNetwork.html");
-            console.log(noInternetURL)
             fetch(noInternetURL)
                 .then(function (response) { 
                     return response.text();                    
                 }).then(function(template){
                     document.body.innerHTML = template;
-                })
+                });
         }
     });
 }
