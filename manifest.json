@@ -18,7 +18,7 @@
         "tabs",
         "activeTab",
         "storage",
-        "webRequestBlocking"
+        "input"
     ],
     "icons": { 
         "16": "icon.png",

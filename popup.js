@@ -9,17 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var playErrorSwitch = document.getElementsByClassName('windows-error')[0];
     var playErrorIntervalInput = document.getElementsByClassName('play-error-interval-number')[0];
     var harlemShakeSwitch = document.getElementsByClassName('harlem-shake')[0];
+    var noRightClickSwitch = document.getElementsByClassName('no-right-click')[0];
     var nicCageChecked = true;
-
-    var elementArray = [
-        nCageSwitch,
-        dogeSwitch,
-        mouseChangeSwitch,
-        noInternetSwitch,
-        screenFlashSwitch,
-        playErrorSwitch,
-        harlemShakeSwitch
-    ];
 
     chrome.storage.sync.get([
         "nicCageToggle",
@@ -28,7 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
         "screenFlashToggle",
         "mouseChangeToggle",
         "playErrorToggle",
-        "harlemShakeChoice"
+        "harlemShakeChoice",
+        "noRightClickChoice"
     ], function(items){
         document.getElementsByClassName('ncage-pics')[0].checked = items.nicCageToggle;
         document.getElementsByClassName('doge-pics')[0].checked = items.dogeToggle;
@@ -37,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementsByClassName('mouse-change-switch')[0].checked = items.mouseChangeToggle;
         document.getElementsByClassName('windows-error')[0].checked = items.playErrorToggle;
         document.getElementsByClassName('harlem-shake')[0].checked = items.harlemShakeChoice;
+        document.getElementsByClassName('no-right-click')[0].checked = items.noRightClickChoice;
     });
 
     nCageSwitch.addEventListener('click' , function() {
@@ -158,6 +151,12 @@ document.addEventListener('DOMContentLoaded', function() {
     harlemShakeSwitch.addEventListener('click', function() {
         chrome.storage.sync.set({
             harlemShakeChoice: harlemShakeSwitch.checked
+        });
+    }, false);
+
+    noRightClickSwitch.addEventListener('click', function() {
+        chrome.storage.sync.set({
+            noRightClickChoice: noRightClickSwitch.checked
         });
     }, false);
 }, false);
