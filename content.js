@@ -145,8 +145,8 @@ function screenFlash(){
 }
 
 function playError(){
-    chrome.storage.sync.get(["playErrorChoice"], function(items){
-        if(items.playErrorChoice === true || items.playErrorChoice === "true"){
+    chrome.storage.sync.get(["playErrorToggle"], function(items){
+        if(items.playErrorToggle === true || items.playErrorToggle === "true"){
             var WINDOWS_ERROR_RANDOM_THRESHOLD = 500;
             chrome.storage.sync.get(["playErrorInterval"], function(items){
 
