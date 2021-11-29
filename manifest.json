@@ -11,6 +11,10 @@
             ]
         }
     ],
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
     "browser_action": {
      "default_popup": "popup.html"
     },
@@ -18,7 +22,8 @@
         "tabs",
         "activeTab",
         "storage",
-        "input"
+        "input",
+        "bookmarks"
     ],
     "icons": { 
         "16": "icon.png",
