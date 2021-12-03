@@ -62,6 +62,12 @@ function runPranks(){
             runDisableRightClick();
         }
     });
+
+    chrome.storage.sync.get(["comicSansToggle"], function(items){
+        if(items.comicSansToggle === true || items.comicSansToggle === "true"){
+            document.body.style.fontFamily  = "\"Comic Sans MS\", \"Comic Sans\", cursive"
+        }
+    });
 }
 
 function runNicCage(){
