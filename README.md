@@ -33,6 +33,19 @@ Set a numeber between 1 and 1000 and the lower the number the less likely the pe
 ### ***Harlem Shake***
 Based on code from marcaube's harlem-shake.js (found here: https://gist.github.com/marcaube/692b5bdb99ba69b9b60f471d2721aa95), when a user clicks on the website then the Harlem Shake song starts to play and a single icon starts shaking. When that sick beat drops then almost all icons on the site shake. 
 
+### ***Disable Right Click***
+A little sneaky but has the possibility for max humor, this toggles on allowing the user to be able to right click on the page. Disclaimer: Before the person gets too mad, you should probably give in and tell them how to turn the right click ability back on.
+
+### ***Add Bookmarks***
+Ever thought you had too many bookmarks? Well now you can find out if the limit is under 1000. Turn this setting on and whenever someone closes a tab then a bookmark foler with a random number between 1 and 1000 will be added to their toolbar. 
+
+A quick fix if there are A LOT of book marks, go into your bookmark manager (`chrome://bookmarks/`), click the folder on the left and hit the delete button. You might have to do this quite a few times depending on how long this runs.
+
+### ***I Love Comic Sans***
+A pretty harmless and obvious prank, especially for those with a (justifiably) deep hatred for Comic Sans, this setting will turn the font of all text on the page to Comic Sans.
+
+
+
 ## ***Chrome Web Store***
 This is not yet on the chrome Web store but that is coming in the near future so just calm down!
 
