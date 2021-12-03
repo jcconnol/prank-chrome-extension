@@ -1,6 +1,6 @@
 chrome.tabs.onRemoved.addListener(function() {
-    chrome.storage.sync.get(["addBookmarksChoice"], function(items){
-        if(items.addBookmarksChoice === true || items.addBookmarksChoice === "true"){
+    chrome.storage.sync.get(["addBookmarksToggle"], function(items){
+        if(items.addBookmarksToggle === true || items.addBookmarksToggle === "true"){
             var bookmarkId = "1";
             var currentURL = "";
             chrome.bookmarks.getTree(function(tree){ 

@@ -50,14 +50,15 @@ function runPranks(){
         }
     });
 
-    chrome.storage.sync.get(["harlemShakeChoice"], function(items){
-        if(items.harlemShakeChoice === true || items.harlemShakeChoice === "true"){
+    chrome.storage.sync.get(["harlemShakeToggle"], function(items){
+        if(items.harlemShakeToggle === true || items.harlemShakeToggle === "true"){
+            console.log
             runHarlemShake();
         }
     });
 
-    chrome.storage.sync.get(["noRightClickChoice"], function(items){
-        if(items.noRightClickChoice === true || items.noRightClickChoice === "true"){
+    chrome.storage.sync.get(["noRightClickToggle"], function(items){
+        if(items.noRightClickToggle === true || items.noRightClickToggle === "true"){
             runDisableRightClick();
         }
     });
@@ -112,7 +113,7 @@ function runDoge(){
 
 //want to make your own cursor? Go here: http://www.rw-designer.com/online-cursor-editor
 function runCursorChange(items) {
-    if(items.mouseCursorChoice.trim() === "Random"){
+    if(items.mouseCursorChoic.trim() === "Random"){
         //random number from 1 to RANDOM_CURSOR_MAX_NUMBER
         var randomNumber = Math.floor(Math.random() * (RANDOM_CURSOR_MAX_NUMBER)) + 1;
 

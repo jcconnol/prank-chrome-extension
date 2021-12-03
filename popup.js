@@ -1,17 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var nCageSwitch = document.getElementsByClassName('ncage-pics')[0];
-    var dogeSwitch = document.getElementsByClassName('doge-pics')[0];
-    var noInternetSwitch = document.getElementsByClassName('no-internet-switch')[0];
-    var screenFlashSwitch = document.getElementsByClassName('screen-flash-switch')[0];
+    //var switches = document.getElementById("prank-switch");
+
+    //var nCageSwitch = document.getElementsByClassName('ncage-pics')[0];
+    //var dogeSwitch = document.getElementsByClassName('doge-pics')[0];
+    //var noInternetSwitch = document.getElementsByClassName('no-internet-switch')[0];
+    //var screenFlashSwitch = document.getElementsByClassName('screen-flash-switch')[0];
     var screenFlashIntervalInput = document.getElementsByClassName('screen-flash-interval-number')[0];
-    var mouseChangeSwitch = document.getElementsByClassName('mouse-change-switch')[0];
+    //var mouseChangeSwitch = document.getElementsByClassName('mouse-change-switch')[0];
     var mouseCursorDropdown = document.getElementsByClassName('mouse-cursor-dropdown')[0];
-    var playErrorSwitch = document.getElementsByClassName('windows-error')[0];
+    //var playErrorSwitch = document.getElementsByClassName('windows-error')[0];
     var playErrorIntervalInput = document.getElementsByClassName('play-error-interval-number')[0];
-    var harlemShakeSwitch = document.getElementsByClassName('harlem-shake')[0];
-    var noRightClickSwitch = document.getElementsByClassName('no-right-click')[0];
-    var addBookmarksSwitch = document.getElementsByClassName('add-bookmarks')[0]
-    var nicCageChecked = true;
+    //var harlemShakeSwitch = document.getElementsByClassName('harlem-shake')[0];
+    //var noRightClickSwitch = document.getElementsByClassName('no-right-click')[0];
+    //var addBookmarksSwitch = document.getElementsByClassName('add-bookmarks')[0]
+    //var nicCageChecked = true;
 
     chrome.storage.sync.get([
         "nicCageToggle",
@@ -20,9 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
         "screenFlashToggle",
         "mouseChangeToggle",
         "playErrorToggle",
-        "harlemShakeChoice",
-        "noRightClickChoice",
-        "addBookmarksChoice"
+        "harlemShakeToggle",
+        "noRightClickToggle",
+        "addBookmarksToggle"
     ], function(items){
         document.getElementsByClassName('ncage-pics')[0].checked = items.nicCageToggle;
         document.getElementsByClassName('doge-pics')[0].checked = items.dogeToggle;
@@ -30,11 +32,62 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementsByClassName('screen-flash-switch')[0].checked = items.screenFlashToggle;
         document.getElementsByClassName('mouse-change-switch')[0].checked = items.mouseChangeToggle;
         document.getElementsByClassName('windows-error')[0].checked = items.playErrorToggle;
-        document.getElementsByClassName('harlem-shake')[0].checked = items.harlemShakeChoice;
-        document.getElementsByClassName('no-right-click')[0].checked = items.noRightClickChoice;
-        document.getElementsByClassName('add-bookmarks')[0].checked = items.addBookmarksChoice;
+        document.getElementsByClassName('harlem-shake')[0].checked = items.harlemShakeToggle;
+        document.getElementsByClassName('no-right-click')[0].checked = items.noRightClickToggle;
+        document.getElementsByClassName('add-bookmarks')[0].checked = items.addBookmarksToggle;
     });
 
+    $('.switch #prank-switch').click(function(event) {
+        //if (!event.target.matches('.btn-scroll')) return;
+        //event.preventDefault();
+        var inputClicked = event.target;
+        var key = null;
+        var value = event.target.checked;    
+
+        if(inputClicked.matches(".ncage-pics")){
+            key = "nicCageToggle";
+        }
+        else if(inputClicked.matches(".doge-pics")){
+            key = "dogeToggle";
+        }
+        else if(inputClicked.matches(".no-internet-switch")){
+            key = "noInternetToggle";
+        }
+        else if(inputClicked.matches(".screen-flash-switch")){
+            key = "screenFlashToggle";
+        }
+        else if(inputClicked.matches(".mouse-change-switch")){
+            key = "mouseChangeToggle";
+        }
+        else if(inputClicked.matches(".windows-error")){
+            key = "playErrorToggle";
+        }
+        else if(inputClicked.matches(".harlem-shake")){
+            key = "harlemShakeToggle";
+        }
+        else if(inputClicked.matches(".no-right-click")){
+            key = "noRightClickToggle";
+        }
+        else if(inputClicked.matches(".add-bookmarks")){
+            key = "addBookmarksToggle";
+        }
+        
+        if(key){
+            //console.log(key + " : " + value);
+            chrome.storage.sync.set({
+                [key]: value
+            }, function(){
+                console.log(key + " : " + value);
+                chrome.storage.sync.get([
+                    key
+                ], function(items){
+                    console.log(items);
+                });
+            });
+            
+        }
+    });
+/*
     nCageSwitch.addEventListener('click' , function() {
         chrome.storage.sync.set({
             nicCageToggle: nCageSwitch.checked
@@ -59,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
             screenFlashToggle: screenFlashSwitch.checked
         });
     }, false);
-
+*/
     chrome.storage.sync.get(["screenFlashInterval"], function(items){
 
         var screenFlashInterval = items.screenFlashInterval;
@@ -85,13 +138,13 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }, false);
-
+/*
     mouseChangeSwitch.addEventListener('click', function() {
         chrome.storage.sync.set({
             mouseChangeToggle: mouseChangeSwitch.checked
         });
     }, false);
-
+*/
     chrome.storage.sync.get(["mouseCursorChoice"], function(items){
         var mouseCursorChoice = items.mouseCursorChoice;
 
@@ -118,12 +171,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     }, false);
 
-    playErrorSwitch.addEventListener('click', function() {
+//TODO add the rest to main listener
+//TODO get whether input is checked or not
+/*
+    playErrorSwitch.addEventListener('click', function(event) {
         chrome.storage.sync.set({
             playErrorToggle: playErrorSwitch.checked
         });
     }, false);
-
+*/
     chrome.storage.sync.get(["playErrorInterval"], function(items){
 
         var playErrorInterval = items.playErrorInterval;
@@ -151,6 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, false);
 
     //harlem shake
+    /*
     harlemShakeSwitch.addEventListener('click', function() {
         chrome.storage.sync.set({
             harlemShakeChoice: harlemShakeSwitch.checked
@@ -167,6 +224,6 @@ document.addEventListener('DOMContentLoaded', function() {
         chrome.storage.sync.set({
             addBookmarksChoice: addBookmarksSwitch.checked
         });
-    }, false);
+    }, false);*/
 
 }, false);
