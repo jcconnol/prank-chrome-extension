@@ -28,8 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     $('.switch #prank-switch').click(function(event) {
-        //if (!event.target.matches('.btn-scroll')) return;
-        //event.preventDefault();
         var inputClicked = event.target;
         var key = null;
         var value = event.target.checked;    
@@ -98,13 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }, false);
-/*
-    mouseChangeSwitch.addEventListener('click', function() {
-        chrome.storage.sync.set({
-            mouseChangeToggle: mouseChangeSwitch.checked
-        });
-    }, false);
-*/
+
     chrome.storage.sync.get(["mouseCursorChoice"], function(items){
         var mouseCursorChoice = items.mouseCursorChoice;
 
@@ -131,15 +123,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     }, false);
 
-//TODO add the rest to main listener
-//TODO get whether input is checked or not
-/*
-    playErrorSwitch.addEventListener('click', function(event) {
-        chrome.storage.sync.set({
-            playErrorToggle: playErrorSwitch.checked
-        });
-    }, false);
-*/
     chrome.storage.sync.get(["playErrorInterval"], function(items){
 
         var playErrorInterval = items.playErrorInterval;
@@ -165,25 +148,4 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }, false);
-
-    //harlem shake
-    /*
-    harlemShakeSwitch.addEventListener('click', function() {
-        chrome.storage.sync.set({
-            harlemShakeChoice: harlemShakeSwitch.checked
-        });
-    }, false);
-
-    noRightClickSwitch.addEventListener('click', function() {
-        chrome.storage.sync.set({
-            noRightClickChoice: noRightClickSwitch.checked
-        });
-    }, false);
-
-    addBookmarksSwitch.addEventListener('click', function() {
-        chrome.storage.sync.set({
-            addBookmarksChoice: addBookmarksSwitch.checked
-        });
-    }, false);*/
-
 }, false);

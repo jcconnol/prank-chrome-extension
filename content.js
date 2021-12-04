@@ -119,7 +119,7 @@ function runDoge(){
 
 //want to make your own cursor? Go here: http://www.rw-designer.com/online-cursor-editor
 function runCursorChange(items) {
-    if(items.mouseCursorChoic.trim() === "Random"){
+    if(items.mouseCursorChoice.trim() === "Random"){
         //random number from 1 to RANDOM_CURSOR_MAX_NUMBER
         var randomNumber = Math.floor(Math.random() * (RANDOM_CURSOR_MAX_NUMBER)) + 1;
 
@@ -134,7 +134,6 @@ function runCursorChange(items) {
 
     }
     else{
-
         var allDivs = document.getElementsByTagName("*");
 
         for(var i = 0; i < allDivs.length; i++){

@@ -45,7 +45,6 @@ A quick fix if there are A LOT of book marks, go into your bookmark manager (`ch
 A pretty harmless and obvious prank, especially for those with a (justifiably) deep hatred for Comic Sans, this setting will turn the font of all text on the page to Comic Sans.
 
 
-
 ## ***Chrome Web Store***
 This is not yet on the chrome Web store but that is coming in the near future so just calm down!
 
