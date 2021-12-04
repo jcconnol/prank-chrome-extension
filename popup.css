@@ -5,10 +5,16 @@ body {
 
 h1 {
   font-size: xx-large;
+  padding-top: 10px;
 }
 
 h3 {
   font-size: medium;
+  padding-right: 10px;
+}
+
+hr {
+  margin: 7% 10% 5% 0;
 }
 
 .play-error-interval,
@@ -88,4 +94,26 @@ input:checked + .slider:before {
 
 .slider.round:before {
     border-radius: 50%;
+}
+
+footer {
+  font-size: small;
+  text-align: center;
+  margin-bottom: 5%;
+}
+
+.footer-helper {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.footer-helper span{
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 1% 3% 4% 3%;
 }
