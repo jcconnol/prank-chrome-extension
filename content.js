@@ -68,6 +68,13 @@ function runPranks(){
             document.body.style.fontFamily  = "\"Comic Sans MS\", \"Comic Sans\", cursive"
         }
     });
+
+    chrome.storage.sync.get(["emojiReplacementToggle"], function(items){
+        if(items.emojiReplacementToggle === true || items.emojiReplacementToggle === "true"){
+            runEmojiReplacement();
+        }
+    });
+    
 }
 
 function runNicCage(){
@@ -359,4 +366,46 @@ function runDisableRightClick(){
         document.oncontextmenu = f1;
       }
       document.oncontextmenu = new Function('return false');
+}
+
+//replacement functionality found here: https://stackoverflow.com/questions/18474497/replace-text-in-a-website
+async function runEmojiReplacement(){
+    var response = await fetch(chrome.runtime.getURL("emojiData.json"));
+
+    if (response.ok) { 
+        var emojiJSON = await response.json();
+        var emojiArray = emojiJSON.data;
+        console.log(emojiArray.length)
+        for(var i = 0; i < emojiArray.length; i++){
+            console.log(i);
+            replaceText(emojiArray[i].from, emojiArray[i].to);
+        }
+    } else {
+        console.log("HTTP-Error: " + response.status);
+    }
+
+    function replaceText(from, to){
+        getAllTextNodes().forEach(function(node){
+            console.log(from + " : "+to)
+            node.nodeValue = node.nodeValue.replace(new RegExp(quote(from), 'g'), to);
+        });
+        
+        function getAllTextNodes(){
+            var result = [];
+
+            (function scanSubTree(node){
+                if(node.childNodes.length) 
+                for(var i = 0; i < node.childNodes.length; i++) 
+                    scanSubTree(node.childNodes[i]);
+                else if(node.nodeType == Node.TEXT_NODE) 
+                result.push(node);
+            })(document);
+
+            return result;
+        }
+
+        function quote(str){
+            return (str+'').replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1");
+        }
+    }
 }

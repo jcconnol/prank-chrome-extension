@@ -3,6 +3,13 @@ body {
     margin-left: 2%;
 }
 
+.prankware-logo {
+  height: 230px;
+  width: 180px;
+  float: right;
+  padding: 20px;
+}
+
 h1 {
   font-size: xx-large;
   padding-top: 10px;
@@ -10,11 +17,12 @@ h1 {
 
 h3 {
   font-size: medium;
-  padding-right: 10px;
+  /*padding-right: 5px;*/
+  padding-bottom: 5px;
 }
 
 hr {
-  margin: 7% 10% 5% 0;
+  margin: 6% 10% 3% 0;
 }
 
 .play-error-interval,

@@ -1,0 +1,144 @@
+{
+    "data": [
+        {
+            "from": "smile",
+            "to": "😀"
+        },
+        {
+            "from": "happy",
+            "to": "😀"
+        },
+        {
+            "from": "glad",
+            "to": "😀"
+        },
+        {
+            "from": "joy",
+            "to": "😀"
+        },
+        {
+            "from": "haha",
+            "to": "😀"
+        },
+        {
+            "from": "laughing",
+            "to": "😆"
+        },
+        {
+            "from": "satisfied",
+            "to": "😆"
+        },
+        {
+            "from": "hot",
+            "to": "😅"
+        },
+        {
+            "from": "sweat",
+            "to": "😅"
+        },
+        {
+            "from": "rofl",
+            "to": "🤣"
+        },
+        {
+            "from": "tear",
+            "to": "😂"
+        },
+        {
+            "from": "sad",
+            "to": "😞"
+        },
+        {
+            "from": "huh",
+            "to": "🙃"
+        },
+        {
+            "from": "upside down",
+            "to": "🙃"
+        },
+        {
+            "from": "wink",
+            "to": "😉"
+        },
+        {
+            "from": "flirt",
+            "to": "😉"
+        },
+        {
+            "from": "angel",
+            "to": "😇"
+        },
+        {
+            "from": "holy",
+            "to": "😇"
+        },
+        {
+            "from": "halo",
+            "to": "😇"
+        },
+        {
+            "from": "love",
+            "to": "🥰"
+        },
+        {
+            "from": "adore",
+            "to": "🥰"
+        },
+        {
+            "from": "money",
+            "to": "🤑"
+        },
+        {
+            "from": "greed",
+            "to": "🤑"
+        },
+        {
+            "from": "cool",
+            "to": "😎"
+        },
+        {
+            "from": "hip",
+            "to": "😎"
+        },
+        {
+            "from": "peace",
+            "to": "✌️"
+        },
+        {
+            "from": "left",
+            "to": "👈"
+        },
+        {
+            "from": "right",
+            "to": "👉"
+        },
+        {
+            "from": " up ",
+            "to": "👆"
+        },
+        {
+            "from": " down ",
+            "to": "👇"
+        },
+        {
+            "from":" yes ",
+            "to": "👍"
+        },
+        {
+            "from":" no ",
+            "to": "👎"
+        },
+        {
+            "from":"pray",
+            "to": "🙏"
+        },
+        {
+            "from":"hope",
+            "to": "🙏"
+        },
+        {
+            "from":"grinning",
+            "to": "😁"
+        }
+    ]
+}
