@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
         "noRightClickToggle",
         "addBookmarksToggle",
         "comicSansToggle",
-        "emojiReplacementToggle"
+        "emojiReplacementToggle",
+        "upgradeBrowserToggle"
     ], function(items){
         document.getElementsByClassName('ncage-pics')[0].checked = items.nicCageToggle;
         document.getElementsByClassName('doge-pics')[0].checked = items.dogeToggle;
@@ -27,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementsByClassName('add-bookmarks')[0].checked = items.addBookmarksToggle;
         document.getElementsByClassName('comic-sans')[0].checked = items.comicSansToggle;
         document.getElementsByClassName('emoji-replacement')[0].checked = items.emojiReplacementToggle;
+        document.getElementsByClassName('upgrade-browser')[0].checked = items.upgradeBrowserToggle;
     });
 
     $('.switch #prank-switch').click(function(event) {
@@ -66,6 +68,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         else if(inputClicked.matches(".emoji-replacement")){
             key = "emojiReplacementToggle"
+        }
+        else if(inputClicked.matches(".upgrade-browser")){
+            key = "upgradeBrowserToggle"
         }
         
         if(key){

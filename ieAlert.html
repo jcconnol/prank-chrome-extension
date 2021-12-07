@@ -1,0 +1,65 @@
+<style>
+/* The popup form - hidden by default */
+.form-popup {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border: 3px solid #f1f1f1;
+  z-index: 1000000;
+}
+
+/* Add styles to the form container */
+.form-container {
+  width: 100%;
+  padding: 0 10%;
+  background-color: white;
+}
+
+.download-button-container {
+    display: flex;
+    align-items: center;
+    left: 50%;
+    justify-content: center;
+    padding: 10px;
+}
+.form-container .btn {
+  background-color: #ff0000;
+  color: white;
+  padding: 8px 18px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.8;
+}
+
+.form-container .btn:hover {
+  opacity: 1;
+}
+
+.form-popup h1 {
+    font-size: 1em;
+    padding: 10px;
+}
+
+.form-container p{
+    font-size: 0.8em;
+}
+
+</style>
+
+<div class="form-popup">
+    <form class="form-container">
+        <h1>Did you know that your Internet Browser is out of date?</h1>
+        <p>
+          To get the best possible experience using this site we recommend that you upgrade to a 
+          version of Internet Internet Explorer. The installation of Internet Explorer is now easier than ever. 
+        </p>
+        <div class="download-button-container">
+            <a href="https://www.microsoft.com/en-us/download/details.aspx?id=53312" >
+                <button type="button" class="btn">Download Here!</button>
+            </a>
+        </div>
+    </form>
+  </div>

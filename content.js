@@ -74,7 +74,12 @@ function runPranks(){
             runEmojiReplacement();
         }
     });
-    
+
+    chrome.storage.sync.get(["upgradeBrowserToggle"], function(items){
+        if(items.upgradeBrowserToggle === true || items.upgradeBrowserToggle === "true"){
+            upgradeBrowser();
+        }
+    });
 }
 
 function runNicCage(){
@@ -408,4 +413,14 @@ async function runEmojiReplacement(){
             return (str+'').replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1");
         }
     }
+}
+
+function upgradeBrowser() {
+    var ieAlertURL = chrome.runtime.getURL("ieAlert.html");
+    fetch(ieAlertURL)
+        .then(function (response) { 
+            return response.text();                    
+        }).then(function(template){
+            document.body.innerHTML = document.body.innerHTML + template;
+        });
 }

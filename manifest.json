@@ -40,6 +40,7 @@
         "dogeImgs/*",
         "soundFiles/*",
         "noNetwork.html",
-        "emojiData.json"
+        "emojiData.json",
+        "ieAlert.html"
     ]
   }
